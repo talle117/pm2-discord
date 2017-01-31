@@ -1,4 +1,7 @@
-# pm2-slack
+# pm2-discord
+I just forked this repo with the plans of converting this to be used with Discord instead of slack. I have not started yet so please ignore everything below for now.
+
+# ~pm2-slack~
 
 This is a PM2 Module for sending events & logs from your PM2 processes to Slack.
 
