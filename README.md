@@ -7,7 +7,7 @@ This is a PM2 Module for sending events & logs from your PM2 processes to Discor
 To install and setup pm2-discord, run the following commands:
 
 ```
-pm2 install pm2-discord
+pm2 install FranciscoG/pm2-discord
 pm2 set pm2-discord:discord_url https://[discord_url]
 ```
 
