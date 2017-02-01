@@ -2,6 +2,7 @@
 var pm2 = require('pm2');
 var pmx = require('pmx');
 var request = require('request');
+var stripAnsi = require('strip-ansi');
 
 // Get the configuration from PM2
 var conf = pmx.initModule();
@@ -131,13 +132,19 @@ function createMessage(data, eventName, altDescription) {
     return;
   }
 
+  var msg = altDescription || data.data;
+  if (typeof msg === "object") {
+    msg = JSON.stringify(msg);
+  } 
+
   messages.push({
     name: data.process.name,
     event: eventName,
-    description: altDescription || JSON.stringify(data.data),
+    description: stripAnsi(msg),
     timestamp: Math.floor(Date.now() / 1000),
   });
 }
+
 // Start listening on the PM2 BUS
 pm2.launchBus(function(err, bus) {
 
@@ -178,7 +185,7 @@ pm2.launchBus(function(err, bus) {
     bus.on('process:event', function(data) {
       if (!conf[data.event]) { return; }
       var msg = 'The following event has occured on the PM2 process ' + data.process.name + ': ' + data.event;
-      createMessage(data, 'exception', msg);
+      createMessage(data, data.event, msg);
     });
 
     // Start the message processing
