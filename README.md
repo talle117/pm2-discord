@@ -18,8 +18,9 @@ To get the Discord URL, you need to setup a Webhook. More details on how to set 
 
 The following events can be subscribed to:
 
+- **process_name** When this is set, it will only output the logs of a specific named process Default: NULL
 - **log** - All standard out logs from your processes. Default: true
-- **error** - All error logs from your processes. Default: true
+- **error** - All error logs from your processes. Default: false
 - **kill** - Event fired when PM2 is killed. Default: true
 - **exception** - Any exceptions from your processes. Default: true
 - **restart** - Event fired when a process is restarted. Default: false
@@ -33,6 +34,7 @@ The following events can be subscribed to:
 You can simply turn these on and off by setting them to true or false using the PM2 set command.
 
 ```
+pm2 set pm2-discord:process_name myprocess
 pm2 set pm2-discord:log true
 pm2 set pm2-discord:error false
 ```

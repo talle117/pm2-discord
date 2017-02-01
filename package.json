@@ -32,8 +32,9 @@
   },
   "config": {
     "discord_url": null,
+    "process_name" : null,
     "log": true,
-    "error": true,
+    "error": false,
     "kill": true,
     "exception": true,
     "restart": false,

@@ -51,9 +51,9 @@ function sendToDiscord(message) {
     if (err) {
       return console.error(err);
     }
-    
-    if (body !== 'ok') {
-      console.error('Error sending notification to Discord, verify that the Discord URL for incoming webhooks is correct.');
+    /* A successful POST to Discord's webhook responds with a 204 NO CONTENT */
+    if (res.statusCode !== 204) {
+      console.error("Error occured during the request to the Discord webhook");
     }
   });
 }
@@ -120,34 +120,38 @@ function processQueue() {
   }, 10000);
 }
 
+function createMessage(data, eventName, altDescription) {
+  // we don't want to output pm2-discord's logs
+  if (data.process.name === 'pm2-discord') {
+    return;
+  }
+  // if a specific process name was specified then we check to make sure only 
+  // that process gets output
+  if (conf.process_name !== null && data.process.name !== conf.process_name) {
+    return;
+  }
+
+  messages.push({
+    name: data.process.name,
+    event: eventName,
+    description: altDescription || JSON.stringify(data.data),
+    timestamp: Math.floor(Date.now() / 1000),
+  });
+}
 // Start listening on the PM2 BUS
 pm2.launchBus(function(err, bus) {
 
     // Listen for process logs
     if (conf.log) {
       bus.on('log:out', function(data) {
-        if (data.process.name !== 'pm2-discord') {
-          messages.push({
-            name: data.process.name,
-            event: 'log',
-            description: JSON.stringify(data.data),
-            timestamp: Math.floor(Date.now() / 1000),
-          });
-        }
+        createMessage(data, 'log');
       });
     }
 
     // Listen for process errors
     if (conf.error) {
       bus.on('log:err', function(data) {
-        if (data.process.name !== 'pm2-discord') {
-          messages.push({
-            name: data.process.name,
-            event: 'error',
-            description: JSON.stringify(data.data),
-            timestamp: Math.floor(Date.now() / 1000),
-          });
-        }
+        createMessage(data, 'error');
       });
     }
 
@@ -166,29 +170,15 @@ pm2.launchBus(function(err, bus) {
     // Listen for process exceptions
     if (conf.exception) {
       bus.on('process:exception', function(data) {
-        if (data.process.name !== 'pm2-discord') {
-          messages.push({
-            name: data.process.name,
-            event: 'exception',
-            description: JSON.stringify(data.data),
-            timestamp: Math.floor(Date.now() / 1000),
-          });
-        }
+        createMessage(data, 'exception');
       });
     }
 
     // Listen for PM2 events
     bus.on('process:event', function(data) {
-      if (conf[data.event]) {
-        if (data.process.name !== 'pm2-discord') {
-          messages.push({
-            name: data.process.name,
-            event: data.event,
-            description: 'The following event has occured on the PM2 process ' + data.process.name + ': ' + data.event,
-            timestamp: Math.floor(Date.now() / 1000),
-          });
-        }
-      }
+      if (!conf[data.event]) { return; }
+      var msg = 'The following event has occured on the PM2 process ' + data.process.name + ': ' + data.event;
+      createMessage(data, 'exception', msg);
     });
 
     // Start the message processing
