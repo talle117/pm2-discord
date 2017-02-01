@@ -1,44 +1,44 @@
 {
-  "name": "pm2-slack",
-  "version": "0.3.0",
-  "description": "A PM2 module to emit events to Slack",
+  "name": "pm2-discord",
+  "version": "0.1.0",
+  "description": "A PM2 module to emit events to discord",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mattpker/pm2-slack"
+    "url": "https://github.com/FranciscoG/pm2-discord"
   },
   "keywords": [
     "pm2",
-    "slack"
+    "discord"
   ],
-  "author": "Matt Atkinson <mattpker@gmail.com> (https://github.com/mattpker)",
+  "author": "Francisco <info@franciscog.com> (https://github.com/FranciscoG)",
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/mattpker/pm2-slack/blob/master/LICENSE"
+      "url": "https://github.com/FranciscoG/pm2-discord/blob/master/LICENSE"
     }
   ],
   "bugs": {
-    "url": "https://github.com/mattpker/pm2-slack/issues"
+    "url": "https://github.com/FranciscoG/pm2-discord/issues"
   },
-  "homepage": "https://github.com/mattpker/pm2-slack",
+  "homepage": "https://github.com/FranciscoG/pm2-discord",
   "dependencies": {
-    "pm2": "^0.15.10",
-    "pmx": "^0.5.5",
+    "pm2": "^2.3.0",
+    "pmx": "^1.0.1",
     "request": "^2.67.0"
   },
   "config": {
-    "slack_url": null,
-    "log": false,
+    "discord_url": null,
+    "log": true,
     "error": true,
     "kill": true,
     "exception": true,
     "restart": false,
     "delete": false,
-    "stop": false,
+    "stop": true,
     "restart overlimit": true,
     "exit": false,
     "start": false,
