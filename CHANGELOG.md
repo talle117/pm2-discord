@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2
+### May 4, 2020
+
+Update readme with more accurate instructions
+
 ## 0.1.1
 ### May 4, 2020
 

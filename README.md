@@ -7,7 +7,7 @@ This is a PM2 Module for sending events & logs from your PM2 processes to Discor
 To install and setup pm2-discord, run the following commands:
 
 ```
-pm2 install FranciscoG/pm2-discord
+pm2 install pm2-discord
 pm2 set pm2-discord:discord_url https://discord_url
 ```
 
@@ -65,7 +65,3 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Acknowledgements
 
 Forked from [mattpker/pm2-slack](https://github.com/mattpker/pm2-slack) and converted to use with Discord. Thanks for the doing all the heavy lifting Matt :stuck_out_tongue_winking_eye:
-
-## Release History
-
-- 0.1.0 Initial Release
