@@ -1,0 +1,12 @@
+# Changelog
+
+## 0.1.1
+### May 4, 2020
+
+- Updated dependencies
+- Added Changlelog.md
+
+## 0.1.0
+### Feb 1, 2017
+
+Initial release after forking the code from `pm2-slack` and converting it to work with Discord
