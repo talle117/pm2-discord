@@ -28,9 +28,9 @@
   },
   "homepage": "https://github.com/FranciscoG/pm2-discord",
   "dependencies": {
+    "node-fetch": "^2.6.0",
     "pm2": "^4.1.2",
     "pmx": "^1.6.7",
-    "request": "^2.88.0",
     "strip-ansi": "^6.0.0"
   },
   "config": {
@@ -54,7 +54,6 @@
   "devDependencies": {
     "@types/axon": "^2.0.0",
     "@types/node": "^13.13.4",
-    "@types/request": "^2.48.4",
     "tslib": "^1.11.1",
     "typescript": "^3.8.3"
   }
