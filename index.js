@@ -123,7 +123,7 @@ function bufferMessage(process) {
 function processQueue() {
   console.log(messages)
   for (const process in messages) {
-    if (messages[process].length > 0) sendToDiscord(bufferMessage());
+    if (messages[process].length > 0) sendToDiscord(bufferMessage(process));
     if (messages[process].length > conf.queue_max) {
       if (!suppressed.isSuppressed) {
         suppressed.isSuppressed = true;
