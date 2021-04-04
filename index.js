@@ -128,7 +128,7 @@ function processQueue() {
         sendToDiscord({
           name: 'pm2-discord-crafty',
           event: 'suppressed',
-          description: 'Messages are being suppressed due to rate limiting.'
+          description: `Messages are being suppressed due to rate limiting. Process: \`${process}\``
         });
       }
       messages[process].splice(conf.queue_max, messages[process].length);
