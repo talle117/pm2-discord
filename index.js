@@ -1,6 +1,5 @@
 'use strict';
 var pm2 = require('pm2');
-var pmx = require('pmx');
 var request = require('request');
 var stripAnsi = require('strip-ansi');
 
@@ -47,6 +46,8 @@ function getWebhook(name) {
 // Function to send event to Discord's Incoming Webhook
 function sendToDiscord(message) {
   var description = message.description;
+
+  console.log(conf)
 
   // If a Discord URL is not set, we do not want to continue and nofify the user that it needs to be set
   if (!conf.discord_url) {
