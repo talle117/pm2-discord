@@ -48,7 +48,8 @@ function getWebhook(name) {
 function sendToDiscord(message) {
   var description = message.description;
 
-  console.log(conf)
+  console.log(message.name)
+  console.log(getWebhook(message.name))
 
   // If a Discord URL is not set, we do not want to continue and nofify the user that it needs to be set
   if (!conf.discord_url) {
