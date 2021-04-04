@@ -23,12 +23,29 @@ var suppressed = {
   date: new Date().getTime()
 };
 
+function getWebhook(name) {
+  switch (name) {
+    case "crafty-bot":
+      return conf.webhook_crafty_bot
+    case "crafty_bot_beta":
+      return conf.webhook_crafty_bot_beta
+    case "crafty-api":
+      return conf.webhook_api
+    case "crafty-api-beta":
+      return conf.webhook_api_beta
+    case "scheduler":
+      return conf.webhook_scheduler
+    case "verification_server":
+      return conf.webhook_verification_server
+    case "webhook_server":
+      return conf.webhook_webhook_server
+    default:
+      return conf.discord_url
+  }
+}
 
 // Function to send event to Discord's Incoming Webhook
 function sendToDiscord(message) {
-
-  console.log(message)
-
   var description = message.description;
 
   // If a Discord URL is not set, we do not want to continue and nofify the user that it needs to be set
@@ -46,7 +63,7 @@ function sendToDiscord(message) {
     method: 'post',
     body: payload,
     json: true,
-    url: conf.discord_url
+    url: getWebhook(message.name)
   };
 
   // Finally, make the post request to the Discord Incoming Webhook

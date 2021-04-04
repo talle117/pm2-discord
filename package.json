@@ -47,6 +47,13 @@
     "online": false,
     "buffer": true,
     "buffer_seconds": 1,
-    "queue_max": 100
+    "queue_max": 100,
+    "webhook_crafty_bot": null,
+    "webhook_crafty_bot_beta": null,
+    "webhook_api": null,
+    "webhook_api_beta": null,
+    "webhook_scheduler": null,
+    "webhook_verification_server": null,
+    "webhook_webhook_server": null
   }
 }
