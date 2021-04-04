@@ -27,7 +27,7 @@ function getWebhook(name) {
   switch (name) {
     case "crafty-bot":
       return conf.webhook_crafty_bot
-    case "crafty_bot_beta":
+    case "crafty-bot-beta":
       return conf.webhook_crafty_bot_beta
     case "crafty-api":
       return conf.webhook_api
@@ -48,8 +48,7 @@ function getWebhook(name) {
 function sendToDiscord(message) {
   var description = message.description;
 
-  console.log(message.name)
-  console.log(getWebhook(message.name))
+  console.log(message)
 
   // If a Discord URL is not set, we do not want to continue and nofify the user that it needs to be set
   if (!conf.discord_url) {
