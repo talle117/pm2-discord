@@ -56,8 +56,6 @@ function getWebhook(name) {
 function sendToDiscord(message) {
   var description = message.description;
 
-  console.log(message)
-
   // If a Discord URL is not set, we do not want to continue and nofify the user that it needs to be set
   if (!conf.discord_url) {
     return console.error("There is no Discord URL set, please set the Discord URL: 'pm2 set pm2-discord:discord_url https://[discord_url]'");
@@ -65,7 +63,7 @@ function sendToDiscord(message) {
 
   // The JSON payload to send to the Webhook
   var payload = {
-    "content": description
+    "content": `\`\`\`${description}\`\`\``
   };
 
   // Options for the post request
