@@ -27,6 +27,8 @@ var suppressed = {
 // Function to send event to Discord's Incoming Webhook
 function sendToDiscord(message) {
 
+  console.log(message)
+
   var description = message.description;
 
   // If a Discord URL is not set, we do not want to continue and nofify the user that it needs to be set
