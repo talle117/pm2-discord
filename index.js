@@ -1,5 +1,6 @@
 'use strict';
 var pm2 = require('pm2');
+var pmx = require('pmx');
 var request = require('request');
 var stripAnsi = require('strip-ansi');
 
