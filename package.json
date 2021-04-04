@@ -1,5 +1,5 @@
 {
-  "name": "pm2-discord",
+  "name": "pm2-discord-talle117",
   "version": "0.1.2",
   "description": "A PM2 module to emit events to discord",
   "main": "index.js",
