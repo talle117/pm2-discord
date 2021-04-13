@@ -20,7 +20,7 @@ var messages = {
   "crafty-bot-beta": [],
   "crafty-api": [],
   "crafty-api-beta": [],
-  scheduler: [],
+  "crafty-scheduler": [],
   "verification-server": [],
   "webhook-server": [],
 }
@@ -41,11 +41,11 @@ function getWebhook(name) {
       return conf.webhook_api
     case "crafty-api-beta":
       return conf.webhook_api_beta
-    case "scheduler":
+    case "crafty-scheduler":
       return conf.webhook_scheduler
-    case "verification_server":
+    case "verification-server":
       return conf.webhook_verification_server
-    case "webhook_server":
+    case "webhook-server":
       return conf.webhook_webhook_server
     default:
       return conf.discord_url
